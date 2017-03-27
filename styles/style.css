@@ -1,3 +1,18 @@
 body{
   margin: 0;
 }
+
+div#Game{
+  height: 500px;
+  border: 1px solid;
+  position: relative;
+}
+
+div#Gremoire{
+  background-image: url(../images/Characters/gremoire_static.png);
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
