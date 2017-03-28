@@ -1,30 +1,4 @@
-var canvas= document.querySelector("canvas");
-var context= canvas.getContext("2d");
-var player = new Image();
-var gremoire = {};
-
-canvas.width = 500;
-canvas.height = 500;
-
-
-function init(){
-  gremoire.image= 'images/Characters/Sprite_puget_basx64.png';
-  gremoire.x=10;
-  gremoire.y= 10;
-  gremoire.pressingUp = false;
-  gremoire.pressingDown = false;
-  gremoire.pressingLeft = false;
-  gremoire.pressingRight = false;
-  player.src = gremoire.image;
-  window.requestAnimationFrame(loop);
-}
-
-function draw(){
-
-    context.drawImage(player, gremoire.x, gremoire.y, 64, 64);
-}
-
-function update(){
+function playerMove(){
   document.onkeydown = function(event){
     if(event.keyCode == 38) { //Z
       gremoire.pressingUp = true;
@@ -56,29 +30,15 @@ function update(){
   }
   
   if(gremoire.pressingUp) {  //z
-    gremoire.y -= 10;
+    gremoire.y -= spd;
   }
   if(gremoire.pressingLeft) { //q
-    gremoire.x -= 10;
+    gremoire.x -= spd;
   }
   if(gremoire.pressingDown) { //s
-    gremoire.y += 10;
+    gremoire.y += spd;
   }
   if(gremoire.pressingRight) { //d
-    gremoire.x += 10;
+    gremoire.x += spd;
   }
 }
-
-function loop(){
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  update();
-  draw();
-  window.requestAnimationFrame(loop);
-}
-
-
-init();
-
-
-
-

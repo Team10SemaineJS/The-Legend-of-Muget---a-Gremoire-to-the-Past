@@ -3,6 +3,13 @@ body{
   position: relative;
 }
 
+.container{
+  margin: 110px auto;
+  width: 1024px;
+  height: 512px;
+  background: url(../images/maquette.png);
+}
+
 /* LOADING */
 
 #load{
@@ -29,26 +36,4 @@ div#load progress#progress{
   top: 50%;
   left: 50%;
   width: 250px;
-}
-
-
-div#screenGame{
-  border: 1px solid #000;
-  position: relative;
-  margin: 15px auto;
-}
-
-
-
-div#Game{
-  height: 500px;
-  border: 1px solid;
-  position: relative;
-}
-
-div#player{
-  background-image: url(../images/Characters/gremoire_static.png);
-  width: 64px;
-  height: 64px;
-  position: absolute;
 }
