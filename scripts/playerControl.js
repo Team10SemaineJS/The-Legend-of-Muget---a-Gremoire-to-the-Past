@@ -33,12 +33,3 @@ document.onkeyup = function(event){
 
 /******************* SHOOT **************************/
 
-playerAttack.addEventListener(){
-  "click";
-  function(){
-    if(arrow > 0){
-      /shooting
-    }
-  };
-  false
-};
