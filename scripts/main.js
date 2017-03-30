@@ -1,16 +1,16 @@
-var canvas= document.querySelector("canvas");
-var context= canvas.getContext("2d");
-var playerSprite = new Image();
-var skeletonSprite = new Image();
-var player = {};
-var skeleton = {};
-var spdPlayer = 1.5;
-var spdEnemy = 0.5;
-var step = 1;
-var srcSpriteX = 0;
-var srcSpriteY = 0;
-var minStep = 30;
-var maxStep = 60;
+var canvas= document.querySelector("canvas"),
+    context= canvas.getContext("2d"),
+    playerSprite = new Image(),
+    skeletonSprite = new Image(),
+    player = {},
+    skeleton = {},
+    spdPlayer = 1.5,
+    spdSkeleton = 0.5,
+    step = 1,
+    srcSpriteX = 0,
+    srcSpriteY = 0,
+    minStep = 30,
+    maxStep = 60;
 
 canvas.width = 1024;
 canvas.height = 512;
@@ -33,14 +33,16 @@ function init() {
   skeleton.width = 64;
   skeleton.height = 64;
   dirX = 0;
-  
+
   skeletonSprite.src = skeleton.image;
   window.requestAnimationFrame(loop);
 }
 
 function loop() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  playerMove();
+  collision();
+  collisionBorder();
+  entitiesMove();
   drawEntities();
   window.requestAnimationFrame(loop);
 }
