@@ -1,6 +1,8 @@
 function drawEntities() {
   playerDraw();
   skeletonDraw();
+  skeletonDraw2();
+  skeletonDraw3();
 }
 
 
@@ -56,9 +58,21 @@ function skeletonDraw() {
   skeletonDraw.srcSpriteX = srcSpriteSkeletonX;
   skeletonDraw.srcSpriteY = srcSpriteSkeletonY;
   directionSpritePlayer(); //Sprite switch
-  context.drawImage(skeletonSprite,
-                    skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton.width, skeleton.height,
-                    skeleton.x, skeleton.y, skeleton.width, skeleton.height);
+  context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton.width, skeleton.height, skeleton.x, skeleton.y, skeleton.width, skeleton.height);
+}
+
+function skeletonDraw2() {
+  skeletonDraw2.srcSpriteX = srcSpriteSkeletonX;
+  skeletonDraw2.srcSpriteY = srcSpriteSkeletonY;
+  directionSpritePlayer(); //Sprite switch
+  context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton2.width, skeleton2.height, skeleton2.x, skeleton2.y, skeleton2.width, skeleton2.height);
+}
+
+function skeletonDraw3() {
+  skeletonDraw3.srcSpriteX = srcSpriteSkeletonX;
+  skeletonDraw3.srcSpriteY = srcSpriteSkeletonY;
+  directionSpritePlayer(); //Sprite switch
+  context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton3.width, skeleton3.height, skeleton3.x, skeleton3.y, skeleton3.width, skeleton3.height);
 }
 
 

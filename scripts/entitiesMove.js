@@ -15,48 +15,37 @@ function collision() {
 
   if (hitboxPlayer.y <= collisionVillageTL.y + collisionVillageTL.h && hitboxPlayer.x <= collisionVillageTL.x + collisionVillageTL.w) {
     collisionUp = true;
-    console.log("collisionUp");
   } else if (hitboxPlayer.y <= collisionVillageTL.y + collisionVillageTL.h-5 && hitboxPlayer.x <= collisionVillageTL.x + collisionVillageTL.w+5) {
     collisionLeft = true;
-    console.log("collisionLeft");
   } else {
     collisionUp = false;
     collisionLeft = false;
-    console.log ("rien");
   }
 
   if (hitboxPlayer.y + hitboxPlayer.h >= collisionVillageBR.y && hitboxPlayer.x + hitboxPlayer.w >= collisionVillageBR.x) {
     collisionDown = true;
-    console.log("collisionDown");
   } else if (hitboxPlayer.x + hitboxPlayer.w >= collisionVillageBR.x-20 && hitboxPlayer.y + hitboxPlayer.h >= collisionVillageBR.y+10) {
     collisionRight = true;
-    console.log("collisionRight");
   } else {
     collisionDown = false;
     collisionRight = false;
-    console.log ("rien");
   }
 }
 
 function collisionBorder() {
   if (hitboxPlayer.y <= 0) {
     collisionBorderUp = true;
-    console.log("collisionBorderUp");
   } else if (hitboxPlayer.y + hitboxPlayer.h >= canvas.height) {
     collisionBorderDown = true;
-    console.log("collisionBorderDown");
   } else if (hitboxPlayer.x <= 0) {
     collisionBorderLeft = true;
-    console.log("collisionBorderLeft");
   } else if (hitboxPlayer.x + hitboxPlayer.w >= canvas.width) {
     collisionBorderRight = true;
-    console.log("collisionBorderRight");
   } else {
     collisionBorderUp = false;
     collisionBorderLeft = false;
     collisionBorderDown = false;
     collisionBorderRight = false;
-    console.log ("rien");
   }
 }
 
@@ -64,6 +53,8 @@ function collisionBorder() {
 function entitiesMove() {
   playerMove();
   skeletonMove();
+  skeletonMove2();
+  skeletonMove3();
 }
 
 function playerMove(){
@@ -122,32 +113,98 @@ function playerMove(){
 function skeletonMove(){
   var diffX = player.x - skeleton.x;
   var diffY = player.y - skeleton.y;
-  if(diffX >= 0 && diffY >= 0)
+  if(diffX > 0 || diffY > 0)
   {
-    skeleton.x += spdSkeleton;
-    skeleton.y += spdSkeleton;
-    hitboxSkeleton.x += spdSkeleton;
-    hitboxSkeleton.y += spdSkeleton;
+    skeleton.x += spdSkeleton1;
+    skeleton.y += spdSkeleton1;
+    hitboxSkeleton.x += spdSkeleton1;
+    hitboxSkeleton.y += spdSkeleton1;
   }
-  else if(diffX >= 0 && diffY <= 0)
+  if(diffX > 0 || diffY < 0)
   {
-    skeleton.x += spdSkeleton;
-    skeleton.y -= spdSkeleton;
-    hitboxSkeleton.x += spdSkeleton;
-    hitboxSkeleton.y -= spdSkeleton;
+    skeleton.x += spdSkeleton1;
+    skeleton.y -= spdSkeleton1;
+    hitboxSkeleton.x += spdSkeleton1;
+    hitboxSkeleton.y -= spdSkeleton1;
   }
-  else if(diffX <= 0 && diffY >= 0)
+  if(diffX < 0 || diffY > 0)
   {
-    skeleton.x -= spdSkeleton;
-    skeleton.y += spdSkeleton;
-    hitboxSkeleton.x -= spdSkeleton;
-    hitboxSkeleton.y += spdSkeleton;
+    skeleton.x -= spdSkeleton1;
+    skeleton.y += spdSkeleton1;
+    hitboxSkeleton.x -= spdSkeleton1;
+    hitboxSkeleton.y += spdSkeleton1;
   }
-  else if(diffX <= 0 && diffY <= 0)
+  if(diffX < 0 || diffY < 0)
   {
-    skeleton.x -= spdSkeleton;
-    skeleton.y -= spdSkeleton;
-    hitboxSkeleton.x -= spdSkeleton;
-    hitboxSkeleton.y -= spdSkeleton;
+    skeleton.x -= spdSkeleton1;
+    skeleton.y -= spdSkeleton1;
+    hitboxSkeleton.x -= spdSkeleton1;
+    hitboxSkeleton.y -= spdSkeleton1;
+  }
+}
+
+function skeletonMove2(){
+  var diffX = player.x - skeleton2.x;
+  var diffY = player.y - skeleton2.y;
+  if(diffX > 0 || diffY > 0)
+  {
+    skeleton2.x += spdSkeleton2;
+    skeleton2.y += spdSkeleton2;
+    hitboxSkeleton.x += spdSkeleton2;
+    hitboxSkeleton.y += spdSkeleton2;
+  }
+  if(diffX > 0 || diffY < 0)
+  {
+    skeleton2.x += spdSkeleton2;
+    skeleton2.y -= spdSkeleton2;
+    hitboxSkeleton.x += spdSkeleton2;
+    hitboxSkeleton.y -= spdSkeleton2;
+  }
+  if(diffX < 0 || diffY > 0)
+  {
+    skeleton2.x -= spdSkeleton2;
+    skeleton2.y += spdSkeleton2;
+    hitboxSkeleton.x -= spdSkeleton2;
+    hitboxSkeleton.y += spdSkeleton2;
+  }
+  if(diffX < 0 || diffY < 0)
+  {
+    skeleton2.x -= spdSkeleton2;
+    skeleton2.y -= spdSkeleton2;
+    hitboxSkeleton.x -= spdSkeleton2;
+    hitboxSkeleton.y -= spdSkeleton2;
+  }
+}
+
+function skeletonMove3(){
+  var diffX = player.x - skeleton3.x;
+  var diffY = player.y - skeleton3.y;
+  if(diffX > 0 || diffY > 0)
+  {
+    skeleton3.x += spdSkeleton3;
+    skeleton3.y += spdSkeleton3;
+    hitboxSkeleton.x += spdSkeleton3;
+    hitboxSkeleton.y += spdSkeleton3;
+  }
+  if(diffX > 0 || diffY < 0)
+  {
+    skeleton3.x += spdSkeleton3;
+    skeleton3.y -= spdSkeleton3;
+    hitboxSkeleton.x += spdSkeleton3;
+    hitboxSkeleton.y -= spdSkeleton3;
+  }
+  if(diffX < 0 || diffY > 0)
+  {
+    skeleton3.x -= spdSkeleton3;
+    skeleton3.y += spdSkeleton3;
+    hitboxSkeleton.x -= spdSkeleton3;
+    hitboxSkeleton.y += spdSkeleton3;
+  }
+  if(diffX < 0 || diffY < 0)
+  {
+    skeleton3.x -= spdSkeleton3;
+    skeleton3.y -= spdSkeleton3;
+    hitboxSkeleton.x -= spdSkeleton3;
+    hitboxSkeleton.y -= spdSkeleton3;
   }
 }
