@@ -14,7 +14,13 @@ var canvas= document.querySelector("canvas"),
     srcSpriteX = 0,
     srcSpriteY = 0,
     minStep = 30,
-    maxStep = 60;
+    maxStep = 60,
+    hitboxPlayer = {x:485, y:260, w:34, h:64},
+    hitboxSkeleton = {x:35, y:20, w:34, h:64},
+    hitboxSkeleton2 = {x:35, y:20, w:34, h:64},
+    hitboxSkeleton3 = {x:35, y:20, w:34, h:64},
+    hpPlayer = 6,
+    hpEnemies = 3;
 
 canvas.width = 1024;
 canvas.height = 512;
@@ -62,3 +68,13 @@ function loop() {
 }
 
 loop();
+
+
+canvas.addEventListener(
+  'click',
+  function(){
+    hpEnemies -= 1;
+    console.log(hpEnemies);
+  }
+)
+

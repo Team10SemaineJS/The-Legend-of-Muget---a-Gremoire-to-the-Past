@@ -1,3 +1,6 @@
+var hpEnemies = 3;
+
+
 function drawEntities() {
   playerDraw();
   skeletonDraw();
@@ -55,24 +58,30 @@ var srcSpriteSkeletonX = 0;
 var srcSpriteSkeletonY = 0;
 
 function skeletonDraw() {
-  skeletonDraw.srcSpriteX = srcSpriteSkeletonX;
-  skeletonDraw.srcSpriteY = srcSpriteSkeletonY;
-  directionSpritePlayer(); //Sprite switch
-  context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton.width, skeleton.height, skeleton.x, skeleton.y, skeleton.width, skeleton.height);
+  if (hpEnemies > 0){
+    skeletonDraw.srcSpriteX = srcSpriteSkeletonX;
+    skeletonDraw.srcSpriteY = srcSpriteSkeletonY;
+    directionSpritePlayer(); //Sprite switch
+    context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton.width, skeleton.height, skeleton.x, skeleton.y, skeleton.width, skeleton.height);
+  }
 }
 
 function skeletonDraw2() {
-  skeletonDraw2.srcSpriteX = srcSpriteSkeletonX;
-  skeletonDraw2.srcSpriteY = srcSpriteSkeletonY;
-  directionSpritePlayer(); //Sprite switch
-  context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton2.width, skeleton2.height, skeleton2.x, skeleton2.y, skeleton2.width, skeleton2.height);
+  if (hpEnemies > 0){
+    skeletonDraw2.srcSpriteX = srcSpriteSkeletonX;
+    skeletonDraw2.srcSpriteY = srcSpriteSkeletonY;
+    directionSpritePlayer(); //Sprite switch
+    context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton2.width, skeleton2.height, skeleton2.x, skeleton2.y, skeleton2.width, skeleton2.height);
+  }
 }
 
 function skeletonDraw3() {
-  skeletonDraw3.srcSpriteX = srcSpriteSkeletonX;
-  skeletonDraw3.srcSpriteY = srcSpriteSkeletonY;
-  directionSpritePlayer(); //Sprite switch
-  context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton3.width, skeleton3.height, skeleton3.x, skeleton3.y, skeleton3.width, skeleton3.height);
+  if (hpEnemies > 0){
+    skeletonDraw3.srcSpriteX = srcSpriteSkeletonX;
+    skeletonDraw3.srcSpriteY = srcSpriteSkeletonY;
+    directionSpritePlayer(); //Sprite switch
+    context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton3.width, skeleton3.height, skeleton3.x, skeleton3.y, skeleton3.width, skeleton3.height);
+  }
 }
 
 
@@ -82,7 +91,7 @@ function directionSpriteSkeleton(){
   {
     srcSpriteSkeletonY = skeleton.height * 0;
   } else if(diffX > 0 && diffY < 0 || diffX > 0 && diffY == 0 || diffX > 0 && diffY > 0)
-    {
+  {
     srcSpriteSkeletonY = skeleton.height * 1;
   } else if(diffX < 0 && diffY < 0 || diffX < 0 && diffY == 0 || diffX < 0 && diffY > 0)
   {
@@ -92,3 +101,52 @@ function directionSpriteSkeleton(){
     srcSpriteSkeletonY = skeleton.height * 3;
   }
 }
+
+
+
+var attack = setInterval(function(){ hitbox()}, 700);
+function hitbox() {
+  if (hpEnemies > 0){
+  hitboxSkeleton.x = skeleton.x + 15;
+  hitboxSkeleton.y = skeleton.y + 15;
+  if (hitboxPlayer.x < hitboxSkeleton.x + hitboxSkeleton.w &&
+      hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton.x &&
+      hitboxPlayer.y < hitboxSkeleton.y + hitboxSkeleton.h &&
+      hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton.y) {
+    console.log("Skeleton 1 attacks");
+    hpPlayer -= 1;
+    console.log(hpPlayer);
+  } else {
+    var d=5;
+  }
+
+  hitboxSkeleton2.x = skeleton2.x + 15;
+  hitboxSkeleton2.y = skeleton2.y + 15;
+  if (hitboxPlayer.x < hitboxSkeleton2.x + hitboxSkeleton2.w &&
+      hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton2.x &&
+      hitboxPlayer.y < hitboxSkeleton2.y + hitboxSkeleton2.h &&
+      hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton2.y) {
+    console.log("Skeleton 2 attacks");
+    hpPlayer -= 1;
+    console.log(hpPlayer);
+  } else {
+    var d=5;
+  }
+
+  hitboxSkeleton3.x = skeleton3.x + 15;
+  hitboxSkeleton3.y = skeleton3.y + 15;
+  if (hitboxPlayer.x < hitboxSkeleton3.x + hitboxSkeleton3.w &&
+      hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton3.x &&
+      hitboxPlayer.y < hitboxSkeleton3.y + hitboxSkeleton3.h &&
+      hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton3.y) {
+    console.log("Skeleton 3 attacks");
+    hpPlayer -= 1;
+    console.log(hpPlayer);
+  } else {
+    var d=5;
+  }
+  }
+}
+
+
+
