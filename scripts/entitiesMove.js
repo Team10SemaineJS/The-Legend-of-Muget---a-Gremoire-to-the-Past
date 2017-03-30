@@ -1,5 +1,5 @@
 var hitboxPlayer = {x:485, y:260, w:34, h:64},
-    hitboxSkeleton = {x:35, y:20, w:34, h:64},
+    hitboxSkeleton = {x:0, y:0, w:34, h:64},
     collisionVillageTL = {x:0, y:0, w:320, h:190},
     collisionVillageBR = {x:730, y:225, w:320, h:64*6},
     collisionUp = false,

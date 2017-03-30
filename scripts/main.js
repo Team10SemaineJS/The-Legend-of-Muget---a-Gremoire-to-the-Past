@@ -64,6 +64,7 @@ function loop() {
   collisionBorder();
   entitiesMove();
   drawEntities();
+  hp();
   window.requestAnimationFrame(loop);
 }
 

@@ -104,49 +104,75 @@ function directionSpriteSkeleton(){
 
 
 
-var attack = setInterval(function(){ hitbox()}, 700);
+var attack = setInterval(function(){ hitbox()}, 1000);
 function hitbox() {
   if (hpEnemies > 0){
-  hitboxSkeleton.x = skeleton.x + 15;
-  hitboxSkeleton.y = skeleton.y + 15;
-  if (hitboxPlayer.x < hitboxSkeleton.x + hitboxSkeleton.w &&
-      hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton.x &&
-      hitboxPlayer.y < hitboxSkeleton.y + hitboxSkeleton.h &&
-      hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton.y) {
-    console.log("Skeleton 1 attacks");
-    hpPlayer -= 1;
-    console.log(hpPlayer);
-  } else {
-    var d=5;
-  }
+    hitboxSkeleton.x = skeleton.x + 15;
+    hitboxSkeleton.y = skeleton.y + 15;
+    if (hitboxPlayer.x < hitboxSkeleton.x + hitboxSkeleton.w &&
+        hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton.x &&
+        hitboxPlayer.y < hitboxSkeleton.y + hitboxSkeleton.h &&
+        hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton.y) {
+      console.log("Skeleton 1 attacks");
+      hpPlayer -= 1;
+      console.log(hpPlayer);
+    }
 
-  hitboxSkeleton2.x = skeleton2.x + 15;
-  hitboxSkeleton2.y = skeleton2.y + 15;
-  if (hitboxPlayer.x < hitboxSkeleton2.x + hitboxSkeleton2.w &&
-      hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton2.x &&
-      hitboxPlayer.y < hitboxSkeleton2.y + hitboxSkeleton2.h &&
-      hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton2.y) {
-    console.log("Skeleton 2 attacks");
-    hpPlayer -= 1;
-    console.log(hpPlayer);
-  } else {
-    var d=5;
-  }
+    hitboxSkeleton2.x = skeleton2.x + 15;
+    hitboxSkeleton2.y = skeleton2.y + 15;
+    if (hitboxPlayer.x < hitboxSkeleton2.x + hitboxSkeleton2.w &&
+        hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton2.x &&
+        hitboxPlayer.y < hitboxSkeleton2.y + hitboxSkeleton2.h &&
+        hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton2.y) {
+      console.log("Skeleton 2 attacks");
+      hpPlayer -= 1;
+      console.log(hpPlayer);
+    }
 
-  hitboxSkeleton3.x = skeleton3.x + 15;
-  hitboxSkeleton3.y = skeleton3.y + 15;
-  if (hitboxPlayer.x < hitboxSkeleton3.x + hitboxSkeleton3.w &&
-      hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton3.x &&
-      hitboxPlayer.y < hitboxSkeleton3.y + hitboxSkeleton3.h &&
-      hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton3.y) {
-    console.log("Skeleton 3 attacks");
-    hpPlayer -= 1;
-    console.log(hpPlayer);
-  } else {
-    var d=5;
-  }
+    hitboxSkeleton3.x = skeleton3.x + 15;
+    hitboxSkeleton3.y = skeleton3.y + 15;
+    if (hitboxPlayer.x < hitboxSkeleton3.x + hitboxSkeleton3.w &&
+        hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton3.x &&
+        hitboxPlayer.y < hitboxSkeleton3.y + hitboxSkeleton3.h &&
+        hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton3.y) {
+      console.log("Skeleton 3 attacks");
+      hpPlayer -= 1;
+      console.log(hpPlayer);
+    }
   }
 }
 
+var heart = document.querySelector("#heart"),
+    container = document.querySelector(".container"),
+    hpPlayer = 6;
 
+function hp(){
+  if (hpPlayer === 6)
+  {
+    heart.innerHTML = '<img src="images/hp/hp6.png">';
+  }
+  else if (hpPlayer === 5)
+  {
+    heart.innerHTML = '<img src="images/hp/hp5.png">';
+  }
+  else if (hpPlayer === 4)
+  {
+    heart.innerHTML = '<img src="images/hp/hp4.png">';
+  }
+  else if (hpPlayer === 3)
+  {
+    heart.innerHTML = '<img src="images/hp/hp3.png">';
+  }
+  else if (hpPlayer === 2)
+  {
+    heart.innerHTML = '<img src="images/hp/hp2.png">';
+  }
+  else if (hpPlayer === 1)
+  {
+    heart.innerHTML = '<img src="images/hp/hp1.png">';
+  }
+  else {
+    heart.style.display = "none";
+  }
+}
 
