@@ -20,7 +20,8 @@ var canvas= document.querySelector("canvas"),
     hitboxSkeleton2 = {x:35, y:20, w:34, h:64},
     hitboxSkeleton3 = {x:35, y:20, w:34, h:64},
     hpPlayer = 6,
-    hpEnemies = 3;
+    hpEnemies = 3,
+    clickWait = true;
 
 canvas.width = 1024;
 canvas.height = 512;
@@ -74,8 +75,33 @@ loop();
 canvas.addEventListener(
   'click',
   function(){
-    hpEnemies -= 1;
-    console.log(hpEnemies);
+    if (clickWait === true && hpEnemies > 0){
+      hpEnemies -= 1;
+      console.log(hpEnemies);
+      clickWait = false;
+    }
   }
 )
+
+var playerAttack = setInterval(function(){delayClick()}, 15000);
+
+function delayClick(){
+  if (clickWait === false){
+    console.log("ready");
+    clickWait = true;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
