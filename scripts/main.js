@@ -13,15 +13,16 @@ var canvas= document.querySelector("canvas"),
     step = 1,
     srcSpriteX = 0,
     srcSpriteY = 0,
-    minStep = 30,
-    maxStep = 60,
+    minStep = 50,
+    maxStep = 100,
     hitboxPlayer = {x:485, y:260, w:34, h:64},
     hitboxSkeleton = {x:35, y:20, w:34, h:64},
     hitboxSkeleton2 = {x:35, y:20, w:34, h:64},
     hitboxSkeleton3 = {x:35, y:20, w:34, h:64},
     hpPlayer = 6,
     hpEnemies = 3,
-    clickWait = true;
+    clickWait = true,
+    container = document.querySelector(".container");
 
 canvas.width = 1024;
 canvas.height = 512;
@@ -53,19 +54,22 @@ function init() {
   skeleton3.y = 100;
   skeleton3.width = 64;
   skeleton3.height = 64;
-  dirX = 0;
-
   skeletonSprite.src = skeleton.image;
   window.requestAnimationFrame(loop);
 }
 
 function loop() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  collision();
-  collisionBorder();
-  entitiesMove();
-  drawEntities();
-  hp();
+  if (hpPlayer > 0){
+    collision();
+    collisionBorder();
+    entitiesMove();
+    drawEntities();
+    hp();
+  } else {
+    heart.style.display = "none";
+    container.style.background = 'url(images/gameOver.png)';
+  }
   window.requestAnimationFrame(loop);
 }
 
@@ -91,7 +95,6 @@ function delayClick(){
     clickWait = true;
   }
 }
-
 
 
 
