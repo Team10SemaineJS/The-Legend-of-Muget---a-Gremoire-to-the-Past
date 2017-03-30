@@ -1,11 +1,7 @@
-var hpEnemies = 3;
-
-
 function drawEntities() {
   playerDraw();
   skeletonDraw();
-  skeletonDraw2();
-  skeletonDraw3();
+  batDraw();
 }
 
 
@@ -27,20 +23,20 @@ function playerDraw() {
 function directionSpritePlayer() {
   if (player.pressingDown) {
     srcSpriteY = 0; //Spritesheet row1
-    switchSprite();
+    switchPlayerSprite();
   } else if (player.pressingRight) {
     srcSpriteY = player.height; //Spritesheet row2
-    switchSprite();
+    switchPlayerSprite();
   } else if (player.pressingLeft) {
     srcSpriteY = player.height * 2; //Spritesheet row3
-    switchSprite();
+    switchPlayerSprite();
   } else if (player.pressingUp) {
     srcSpriteY = player.height * 3; //Spritesheet row4
-    switchSprite();
+    switchPlayerSprite();
   }
 }
 
-function switchSprite() {
+function switchPlayerSprite() {
   if (step <= minStep) {
     srcSpriteX = player.width; //Spritesheet col2
     step += 1;
@@ -53,87 +49,68 @@ function switchSprite() {
 }
 
 
-
 var srcSpriteSkeletonX = 0;
 var srcSpriteSkeletonY = 0;
 
 function skeletonDraw() {
-    skeletonDraw.srcSpriteX = srcSpriteSkeletonX;
-    skeletonDraw.srcSpriteY = srcSpriteSkeletonY;
-    directionSpritePlayer(); //Sprite switch
-    context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton.width, skeleton.height, skeleton.x, skeleton.y, skeleton.width, skeleton.height);
-  }
+  skeletonDraw.srcSpriteX = srcSpriteSkeletonX;
+  skeletonDraw.srcSpriteY = srcSpriteSkeletonY;
+  directionSpriteSkeleton(); //Sprite switch
+  context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton.width, skeleton.height, skeleton.x, skeleton.y, skeleton.width, skeleton.height);
+}
 
-function skeletonDraw2() {
-    skeletonDraw2.srcSpriteX = srcSpriteSkeletonX;
-    skeletonDraw2.srcSpriteY = srcSpriteSkeletonY;
-    directionSpritePlayer(); //Sprite switch
-    context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton2.width, skeleton2.height, skeleton2.x, skeleton2.y, skeleton2.width, skeleton2.height);
-  }
+var srcSpriteBatX = 0;
+var srcSpriteBatY = 0;
 
-function skeletonDraw3() {
-    skeletonDraw3.srcSpriteX = srcSpriteSkeletonX;
-    skeletonDraw3.srcSpriteY = srcSpriteSkeletonY;
-    directionSpritePlayer(); //Sprite switch
-    context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton3.width, skeleton3.height, skeleton3.x, skeleton3.y, skeleton3.width, skeleton3.height);
-  }
+function batDraw() {
+  batDraw.srcSpriteX = srcSpriteBatX;
+  batDraw.srcSpriteY = srcSpriteBatY;
+  directionSpritePlayer(); //Sprite switch 
+  context.drawImage(batSprite, batDraw.srcSpriteX, batDraw.srcSpriteY, bat.width, bat.height, bat.x, bat.y, bat.width, bat.height);
+}
 
 
 
 function directionSpriteSkeleton(){
-  if(diffX >= 0 && diffY >= 0)
+  var diffX = player.x - skeleton.x;
+  var diffY = player.y - skeleton.y;
+  if (diffX >= 0 && diffY >= 0)
   {
     srcSpriteSkeletonY = skeleton.height * 0;
-  } else if(diffX > 0 && diffY < 0 || diffX > 0 && diffY == 0 || diffX > 0 && diffY > 0)
+  } else if (diffX > 0 && diffY < 0 || diffX > 0 && diffY == 0 || diffX > 0 && diffY > 0)
   {
     srcSpriteSkeletonY = skeleton.height * 1;
-  } else if(diffX < 0 && diffY < 0 || diffX < 0 && diffY == 0 || diffX < 0 && diffY > 0)
+  } else if (diffX < 0 && diffY < 0 || diffX < 0 && diffY == 0 || diffX < 0 && diffY > 0)
   {
     srcSpriteSkeletonY = skeleton.height * 2;
   } else
   {
-    srcSpriteSkeletonY = skeleton.height * 3;
+    srcSpriteSkeletonY = skeleton.height * 0;
   }
 }
 
 
 
 var attack = setInterval(function(){ hitbox()}, 1000);
-function hitbox() {
 
+function hitbox() {
   hitboxSkeleton.x = skeleton.x + 15;
   hitboxSkeleton.y = skeleton.y;
-  hitboxSkeleton2.x = skeleton2.x + 15;
-  hitboxSkeleton2.y = skeleton2.y;
-  hitboxSkeleton3.x = skeleton3.x + 15;
-  hitboxSkeleton3.y = skeleton3.y;
-  if (hpEnemies > 0 && hitboxPlayer.x < hitboxSkeleton.x + hitboxSkeleton.w &&
-      hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton.x &&
-      hitboxPlayer.y < hitboxSkeleton.y + hitboxSkeleton.h &&
-      hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton.y){
-        console.log("Skeleton 1 attacks");
+  if (hitboxPlayer.x < hitboxSkeleton.x + hitboxSkeleton.w 
+      && hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton.x 
+      && hitboxPlayer.y < hitboxSkeleton.y + hitboxSkeleton.h 
+      && hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton.y) {
     hpPlayer -= 1;
-    console.log(hpPlayer);
-  } else if (hpEnemies > 0 && hitboxPlayer.x < hitboxSkeleton2.x + hitboxSkeleton2.w &&
-      hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton2.x &&
-      hitboxPlayer.y < hitboxSkeleton2.y + hitboxSkeleton2.h &&
-      hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton2.y) {
-    console.log("Skeleton 2 attacks");
+  } else if (hitboxPlayer.x < hitboxBat.x + hitboxBat.w 
+             && hitboxPlayer.x + hitboxPlayer.w > hitboxBat.x 
+             && hitboxPlayer.y < hitboxBat.y + hitboxBat.h 
+             && hitboxPlayer.h + hitboxPlayer.y > hitboxBat.y) {
     hpPlayer -= 1;
-    console.log(hpPlayer);
-  } else if (hpEnemies > 0 
-             && hitboxPlayer.x < hitboxSkeleton3.x + hitboxSkeleton3.w 
-             && hitboxPlayer.x + hitboxPlayer.w > hitboxSkeleton3.x 
-             && hitboxPlayer.y < hitboxSkeleton3.y + hitboxSkeleton3.h 
-             && hitboxPlayer.h + hitboxPlayer.y > hitboxSkeleton3.y) {
-    console.log("Skeleton 3 attacks");
-    hpPlayer -= 1;
-    console.log(hpPlayer);
   } else {
+
     hpPlayer = hpPlayer;
   }
 }
-
 
 var heart = document.querySelector("#heart"),
     hpPlayer = 6;

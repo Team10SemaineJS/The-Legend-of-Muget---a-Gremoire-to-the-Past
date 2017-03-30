@@ -1,13 +1,27 @@
 body{
   margin: 0;
   position: relative;
+  font-size: 60px;
 }
 
 .container{
   margin: 110px auto;
   width: 1024px;
   height: 512px;
-  background: url(../images/maquette.png);
+  background: url(../images/village.png);
+  text-align: center;
+}
+
+#score p{
+  margin: 0
+}
+
+#heart {
+  float: left
+}
+
+#score{
+  float: right;
 }
 
 /* LOADING */

@@ -1,5 +1,6 @@
 var hitboxPlayer = {x:485, y:260, w:34, h:64},
     hitboxSkeleton = {x:0, y:0, w:34, h:64},
+    hitboxBat = {x:0, y:0, w:34, h:32},
     collisionVillageTL = {x:0, y:0, w:320, h:190},
     collisionVillageBR = {x:730, y:225, w:320, h:64*6},
     collisionUp = false,
@@ -53,8 +54,7 @@ function collisionBorder() {
 function entitiesMove() {
   playerMove();
   skeletonMove();
-  skeletonMove2();
-  skeletonMove3();
+  batMove();
 }
 
 function playerMove(){
@@ -143,68 +143,21 @@ function skeletonMove(){
   }
 }
 
-function skeletonMove2(){
-  var diffX = player.x - skeleton2.x;
-  var diffY = player.y - skeleton2.y;
-  if(diffX > 0 || diffY > 0)
-  {
-    skeleton2.x += spdSkeleton2;
-    skeleton2.y += spdSkeleton2;
-    hitboxSkeleton.x += spdSkeleton2;
-    hitboxSkeleton.y += spdSkeleton2;
-  }
-  if(diffX > 0 || diffY < 0)
-  {
-    skeleton2.x += spdSkeleton2;
-    skeleton2.y -= spdSkeleton2;
-    hitboxSkeleton.x += spdSkeleton2;
-    hitboxSkeleton.y -= spdSkeleton2;
-  }
-  if(diffX < 0 || diffY > 0)
-  {
-    skeleton2.x -= spdSkeleton2;
-    skeleton2.y += spdSkeleton2;
-    hitboxSkeleton.x -= spdSkeleton2;
-    hitboxSkeleton.y += spdSkeleton2;
-  }
-  if(diffX < 0 || diffY < 0)
-  {
-    skeleton2.x -= spdSkeleton2;
-    skeleton2.y -= spdSkeleton2;
-    hitboxSkeleton.x -= spdSkeleton2;
-    hitboxSkeleton.y -= spdSkeleton2;
-  }
-}
 
-function skeletonMove3(){
-  var diffX = player.x - skeleton3.x;
-  var diffY = player.y - skeleton3.y;
-  if(diffX > 0 || diffY > 0)
+var dirX = 2;
+var dirY = 2;
+
+function batMove(){
+  bat.x += dirX;
+  bat.y += dirY
+  hitboxBat.x = bat.x;
+  hitboxBat.y = bat.y;
+  if (bat.x <= 0 || bat.x + 32 == canvas.width)
   {
-    skeleton3.x += spdSkeleton3;
-    skeleton3.y += spdSkeleton3;
-    hitboxSkeleton.x += spdSkeleton3;
-    hitboxSkeleton.y += spdSkeleton3;
+    dirX = -dirX;
   }
-  if(diffX > 0 || diffY < 0)
+  if (bat.y <= 0 || bat.y + 32 == canvas.height)
   {
-    skeleton3.x += spdSkeleton3;
-    skeleton3.y -= spdSkeleton3;
-    hitboxSkeleton.x += spdSkeleton3;
-    hitboxSkeleton.y -= spdSkeleton3;
-  }
-  if(diffX < 0 || diffY > 0)
-  {
-    skeleton3.x -= spdSkeleton3;
-    skeleton3.y += spdSkeleton3;
-    hitboxSkeleton.x -= spdSkeleton3;
-    hitboxSkeleton.y += spdSkeleton3;
-  }
-  if(diffX < 0 || diffY < 0)
-  {
-    skeleton3.x -= spdSkeleton3;
-    skeleton3.y -= spdSkeleton3;
-    hitboxSkeleton.x -= spdSkeleton3;
-    hitboxSkeleton.y -= spdSkeleton3;
+    dirY = -dirY;
   }
 }
