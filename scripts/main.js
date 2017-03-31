@@ -63,6 +63,7 @@ function init() {
   window.requestAnimationFrame(loop);
 }
 
+
 function loop() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   if (hpPlayer > 0){
@@ -70,7 +71,7 @@ function loop() {
     collision();
     collisionBorder();
     entitiesMove();
-    drawEntities();
+    entitiesDraw();
     hp();
     musicTheme.play();
     score.innerHTML = '<p>Score = ' + scorePoints + '</p>';

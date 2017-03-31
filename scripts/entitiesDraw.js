@@ -1,4 +1,4 @@
-function drawEntities() {
+function entitiesDraw() {
   playerDraw();
   skeletonDraw();
   batDraw();
@@ -80,11 +80,9 @@ function directionSpriteSkeleton(){
   }
 }
 
-var srcSpriteBatX = 0,
-    srcSpriteBatY = 0;
 
-batDraw.srcSpriteX = srcSpriteBatX;
-batDraw.srcSpriteY = srcSpriteBatY;
+batDraw.srcSpriteX = 0;
+batDraw.srcSpriteY = 0;
 
 function batDraw() {
   context.drawImage(batSprite, 
