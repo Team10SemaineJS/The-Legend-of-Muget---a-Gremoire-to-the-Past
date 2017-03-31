@@ -162,7 +162,10 @@ li a:focus{
 /******** SECTIONS *********/
 /***************************/
 
- /* Background and font colors */
+/* Background and font colors */
+header{
+  background-color:floralwhite;
+}
 #section1, #section3, footer{
   background-color: #170606;
   color: #faf7dc;
@@ -181,7 +184,6 @@ li a:focus{
 .section{
   text-align: center;
   height: 600px;
-  float: center;
 }
 .subSection{
   height: 400px;
@@ -195,8 +197,21 @@ li a:focus{
   margin-bottom: 50px;
   font-size: 50px;
 }
-
-/* Symbols on the right and the left */
+#section1 .subSection img{
+  border: 1px solid;
+  border-color: #b99f65;
+  vertical-align: bottom;
+}
+#section3 .subSection img{
+  height: 500px;
+  vertical-align: bottom;
+  border: 1px solid #b99f65;
+}
+#section4 .subSection img{
+  max-width: 400px;
+  vertical-align: bottom;
+}
+/* Symbols on the right and left sides */
 .symbols{
   max-width: 20px;
   height: 600px;
@@ -248,7 +263,7 @@ li a:focus{
   transition-duration: 1.2s;
   border-color: #b99f65;
   color: #170606;
-  
+
 }
 
 /***************************/
@@ -261,10 +276,9 @@ footer{
   padding-top: 50px;
 }
 
-/***************************/
+/*************************/
 /********* PLAY **********/
-/***************************/
-
+/*************************/
 
 body#play{
   margin: 0;

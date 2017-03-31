@@ -93,22 +93,22 @@ function batDraw() { /* Draw the bat entities with his image */
 /* Same purpose as batDraw() for the others entities */
 
 function batDraw1() {
-    context.drawImage(batSprite, 
-                      batDraw.srcSpriteX, batDraw.srcSpriteY, bat.width, bat.height, 
-                      bat1.x, bat1.y, bat.width, bat.height);
+  context.drawImage(batSprite, 
+                    batDraw.srcSpriteX, batDraw.srcSpriteY, bat.width, bat.height, 
+                    bat1.x, bat1.y, bat.width, bat.height);
 }
 
 function batDraw2() {
-    context.drawImage(batSprite, 
-                      batDraw.srcSpriteX, batDraw.srcSpriteY, bat.width, bat.height, 
-                      bat2.x, bat2.y, bat.width, bat.height);
-  }
+  context.drawImage(batSprite, 
+                    batDraw.srcSpriteX, batDraw.srcSpriteY, bat.width, bat.height, 
+                    bat2.x, bat2.y, bat.width, bat.height);
+}
 
 function batDraw3() {
-    context.drawImage(batSprite, 
-                      batDraw.srcSpriteX, batDraw.srcSpriteY, bat.width, bat.height, 
-                      bat3.x, bat3.y, bat.width, bat.height);
-  }
+  context.drawImage(batSprite, 
+                    batDraw.srcSpriteX, batDraw.srcSpriteY, bat.width, bat.height, 
+                    bat3.x, bat3.y, bat.width, bat.height);
+}
 
 
 
