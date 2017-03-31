@@ -1,7 +1,276 @@
-body{
+h2, body{
+  font-family: 'Macondo Swash Caps', cursive;
+}
+
+/***************************/
+/********* HEADER **********/
+/***************************/
+
+header{
+  text-align: center;
+  height: 400px;
+  position: relative;
+}
+.leaves{
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: absolute;
+}
+/* Positions for the leaves in the header */
+.NW{ /* NW for North West */
+  top:0;
+  left:0;
+}
+.NE{
+  top:0;
+  right:0;
+}
+.SW{
+  bottom:0;
+  left:0;
+}
+.SE{
+  bottom:0;
+  right:0;
+}
+
+#logoTitle{
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Gestion des Animations */
+.fadeInOut{
+  animation-name: fadeInOut;
+  -webkit-animation-name: fadeInOut;
+  animation-duration: 6s;
+  -webkit-animation-duration: 6s;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+.fadeIn{
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+  animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.pulse{
+  animation-name: pulse;
+  -webkit-animation-name: pulse;
+
+  animation-duration: 5s;
+  -webkit-animation-duration: 5s;
+
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.90); /* On change la taille */
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.90);
+    opacity: 0.9;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.90);
+    opacity: 0.9;
+  }
+  50% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.90);
+    opacity: 0.9;
+  }
+}
+/***************************/
+/******** NAV BAR **********/
+/***************************/
+nav{
+  height: 50px;
+  border: 1px solid;
+  border: 1px solid;
+  border-color: #b99f65;
+  background-image: url(../images/navbar.png);
+}
+ul{
+  text-align: center;
+  margin: auto;
+  width: 500px;
+  height: 50px;
+  padding-top: 4px;
+  border: 2px solid;
+  border-color: #b99f65;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  background-image: url(../images/navbar.png)
+}
+li{
+  text-align: center;
+  margin: 0 12px;
+  list-style-type: none;
+  display: inline-block;
+  font-size: 24px;
+}
+li a{
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.7s;
+}
+li a:hover{
+  color: #b99f65;
+}
+li a:focus{
+  color: #b99f65;
+}
+.floatable{ /* Classe ajoutée par le script */
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-left: -250px;
+}
+
+/***************************/
+/******** SECTIONS *********/
+/***************************/
+
+ /* Background and font colors */
+#section1, #section3, footer{
+  background-color: #170606;
+  color: #faf7dc;
+}
+#section2, #section4{
+  background-color: #faf7dc;
+}
+#section1 h2, #section3 h2{
+  text-shadow: 2px 2px 5px white;
+}
+#section2 h2{
+  text-shadow: 2px 2px 3px black;
+}
+
+/* Generalities */
+.section{
+  text-align: center;
+  height: 600px;
+  float: center;
+}
+.subSection{
+  height: 400px;
+  margin-top: 50px;
+  display: inline-block;
+}
+.subSection p{
+  font-size: 20px;
+}
+.subSection h2{
+  margin-bottom: 50px;
+  font-size: 50px;
+}
+
+/* Symbols on the right and the left */
+.symbols{
+  max-width: 20px;
+  height: 600px;
+  float: left;
+  overflow: hidden;
+}
+.clearBoth + .symbols{
+  max-width: 20px;
+  height: 600px;
+  float: right;
+  overflow: hidden;
+}
+#section1 .symbols, #section3 .symbols{
+  opacity: 0.8;
+}
+
+
+.sectionSeparator{
+  height: 20px;
+  background-image: url(../images/navbar.png);
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #b99f65;
+}
+
+/* Button Play */
+#buttonPlay{
+  width: 260px;
+  height: 50px;
+  background-color:#170606;
+  border-bottom: 3px solid;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-color: #b99f65;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 5px;
+  font-size: 25px;
+  font-family: 'Macondo', cursive; 
+  font-weight: bold;
+  color: #faf7dc;
+
+}
+#buttonPlay:hover{
+  background-color: #b99f65;
+  transition-duration: 1.2s;
+  border-color: #b99f65;
+  color: #170606;
+  
+}
+
+/***************************/
+/********* FOOTER **********/
+/***************************/
+
+footer{
+  height: 100px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+/***************************/
+/********* PLAY **********/
+/***************************/
+
+
+body#play{
   margin: 0;
   position: relative;
   font-size: 30px;
+  background: url(../images/)
 }
 
 .container{
@@ -22,28 +291,4 @@ body{
 
 #score{
   float: right;
-}
-
-/* LOADING */
-
-#load{
-  position: absolute;
-  width: 250px;
-}
-
-div#load img{
-}
-
-div#load progress#progress{
-  width: 250px;
-}
-
-
-/* MENU */
-
-#menu{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 250px;
 }

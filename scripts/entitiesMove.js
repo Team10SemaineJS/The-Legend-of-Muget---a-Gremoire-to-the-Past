@@ -1,6 +1,9 @@
 var hitboxPlayer = {x:485, y:260, w:34, h:64},
     hitboxSkeleton = {x:0, y:0, w:34, h:64},
     hitboxBat = {x:0, y:0, w:34, h:32},
+    hitboxBat1 = {x:0, y:0, w:34, h:32},
+    hitboxBat2 = {x:0, y:0, w:34, h:32},
+    hitboxBat3 = {x:0, y:0, w:34, h:32},
     collisionVillageTL = {x:0, y:0, w:320, h:190},
     collisionVillageBR = {x:730, y:225, w:320, h:64*6},
     collisionUp = false,
@@ -14,7 +17,8 @@ var hitboxPlayer = {x:485, y:260, w:34, h:64},
 
 function collision() {
 
-  if (hitboxPlayer.y <= collisionVillageTL.y + collisionVillageTL.h && hitboxPlayer.x <= collisionVillageTL.x + collisionVillageTL.w) {
+  if (hitboxPlayer.y <= collisionVillageTL.y + collisionVillageTL.h 
+      && hitboxPlayer.x <= collisionVillageTL.x + collisionVillageTL.w) {
     collisionUp = true;
   } else if (hitboxPlayer.y <= collisionVillageTL.y + collisionVillageTL.h-5 && hitboxPlayer.x <= collisionVillageTL.x + collisionVillageTL.w+5) {
     collisionLeft = true;
@@ -23,7 +27,8 @@ function collision() {
     collisionLeft = false;
   }
 
-  if (hitboxPlayer.y + hitboxPlayer.h >= collisionVillageBR.y && hitboxPlayer.x + hitboxPlayer.w >= collisionVillageBR.x) {
+  if (hitboxPlayer.y + hitboxPlayer.h >= collisionVillageBR.y 
+      && hitboxPlayer.x + hitboxPlayer.w >= collisionVillageBR.x) {
     collisionDown = true;
   } else if (hitboxPlayer.x + hitboxPlayer.w >= collisionVillageBR.x-20 && hitboxPlayer.y + hitboxPlayer.h >= collisionVillageBR.y+10) {
     collisionRight = true;
@@ -55,6 +60,9 @@ function entitiesMove() {
   playerMove();
   skeletonMove();
   batMove();
+  batMove1();
+  batMove2();
+  batMove3();
 }
 
 function playerMove(){
@@ -143,21 +151,75 @@ function skeletonMove(){
   }
 }
 
+// BATMOVE
 
-var dirX = 2;
-var dirY = 2;
+
+var dirXBat = 2;
+var dirYBat = 2;
+var dirXBat1 = 2;
+var dirYBat1 = 2;
+var dirXBat2 = 2;
+var dirYBat2 = 2;
+var dirXBat3 = 2;
+var dirYBat3 = 2;
 
 function batMove(){
-  bat.x += dirX;
-  bat.y += dirY
+  bat.x += dirXBat;
+  bat.y += dirYBat;
   hitboxBat.x = bat.x;
   hitboxBat.y = bat.y;
   if (bat.x <= 0 || bat.x + 32 == canvas.width)
   {
-    dirX = -dirX;
+    dirXBat = -dirXBat;
   }
   if (bat.y <= 0 || bat.y + 32 == canvas.height)
   {
-    dirY = -dirY;
+    dirYBat = -dirYBat;
+  }
+}
+
+function batMove1(){
+  bat1.x += dirXBat1;
+  bat1.y += dirYBat1;
+  hitboxBat1.x = bat1.x;
+  hitboxBat1.y = bat1.y;
+  if (bat1.x <= 0 || bat1.x + 32 == canvas.width)
+  {
+    dirXBat1 = -dirXBat1;
+  }
+  if (bat1.y <= 0 || bat1.y + 32 == canvas.height)
+  {
+    dirYBat1 = -dirYBat1;
+  }
+}
+
+function batMove2(){
+  bat2.x += dirXBat2;
+  bat2.y += dirYBat2;
+  hitboxBat2.x = bat2.x;
+  hitboxBat2.y = bat2.y;
+  if (bat2.x <= 0 || bat2.x + 32 == canvas.width)
+  {
+    dirXBat2 = -dirXBat2;
+  }
+  if (bat2.y <= 0 || bat2.y + 32 == canvas.height)
+  {
+    dirYBat2 = -dirYBat2;
+  }
+}
+
+
+function batMove3(){
+  bat3.x += dirXBat3;
+  bat3.y += dirYBat3;
+  hitboxBat3.x = bat3.x;
+  hitboxBat3.y = bat3.y;
+  if (bat3.x <= 0 || bat3.x + 32 == canvas.width)
+  {
+    dirXBat3 = -dirXBat3;
+  }
+  if (bat3.y <= 0 || bat3.y + 32 == canvas.height)
+  {
+    dirYBat3 = -dirYBat3;
   }
 }

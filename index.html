@@ -1,42 +1,128 @@
 <!DOCTYPE html>
 <html lang="fr">
+
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="styles/style.css"/>
+    <title>The Legend of Muget</title>
+    <link rel="stylesheet" href="styles/foundation.css" />
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Macondo+Swash+Caps|Yanone+Kaffeesatz|Macondo" rel="stylesheet">
   </head>
-  <body><!-- 
-    <div id="load">
-      <img src="images/mugetLogo.png" alt="logo">
-      <progress id="progress" value="15" max="100"></progress>
-    </div> -->
 
-    <!-- <div id="menu">
-      <div id="logo"><
-        
-      /div>
-      <div id="level">Difficulté</div>
-      <div id="start">Démarrer</div>
-    </div>
-    <div id="screenGame">
-      <div id="player"></div>
-    </div> -->
-    <div class="container">
-      <canvas></canvas>
-      <div id="heart">
-        <img src="images/hp/hp6.png" title="lifePoint" alt="">
+  <body> <!-- The whole WebSite is responsive  -->
+    <!--------------- HEADER --------------->
+    <header>
+      <div class="leaves NW fadeIn "><img src="images/leavesNW.png"></div> <!-- Leaves Images  -->
+      <div class="leaves NE fadeIn"><img src="images/leavesNE.png"></div>
+      <div id="logoTitle"><img src="images/mugetLogo.png" class="pulse"></div> <!-- Animated Logo  -->
+      <div class="leaves SW fadeIn"><img src="images/leavesSW.png"></div>
+      <div class="leaves SE fadeIn"><img src="images/leavesSE.png"></div>
+    </header>
+    <!--------------- NAV BAR --------------->
+    <nav>
+      <div class="row column">
+        <ul>
+          <li><a class="scrollTo" href="#section1">Univers</a></li>
+          <li><a class="scrollTo" href="#section2">Personnages</a></li>
+          <li><a class="scrollTo" href="#section3">Event</a></li>
+          <li><a class="scrollTo" href="#section4">Jouer</a></li>
+        </ul>
       </div>
-      <div id="score">
-        <p>
-          Score : x
-        </p>
+    </nav>
+    <!--------------- 3 SECTIONS --------------->
+    <section id="section1"> <!-- Section 1 -->
+      <div class="symbols fadeInOut"><img src="images/beige.png"></div>
+      <div class="clearBoth"></div>
+      <div class="symbols fadeInOut"><img src="images/beige.png"></div>
+      <div class="clearBoth"></div>
+      <div class="section row column">
+        <div class="subSection large-5">image</div>
+        <div class="subSection large-5">
+          <h2>L'Univers</h2>
+          <p>Retournez dans le passé avec un jeu rétro qui découvre un tout nouveau monde avec une histoire accrochante. Les amateurs de Zelda devraient y trouver leur compte.</p>
+        </div>
       </div>
-    </div>
-
-
+      <div class="sectionSeparator"></div>
+    </section>
+    <section id="section2"> <!-- Section 2 -->
+      <div class="symbols"><img src="images/brown.png"></div>
+      <div class="clearBoth"></div>
+      <div class="symbols"><img src="images/brown.png"></div>
+      <div class="clearBoth"></div>
+      <div class="section row column">
+        <div class="subSection large-5">
+          <h2>Le Personnage</h2>
+          <p>Incarnez un professeur poursuivi par des monstres...</p>
+        </div>
+        <div class="subSection large-5"><img src="images/puget.png" alt="Character"/></div>
+      </div>
+      <div class="sectionSeparator"></div>
+    </section>
+    <section id="section3"> <!-- Section 3 -->
+      <div class="symbols fadeInOut"><img src="images/beige.png"></div>
+      <div class="clearBoth"></div>
+      <div class="symbols fadeInOut"><img src="images/beige.png"></div>
+      <div class="clearBoth"></div>
+      <div class="section row column">
+        <div class="subSection large-5">image</div>
+        <div class="subSection large-5">
+          <h2>IRLegend</h2>
+          <p>Venez nous rejoindre lors de notre salon entièrement dédié à « The Legend of Muget », où tous les fans des premières heures pourront déambuler dans les différentes maps recréée à taille humaine.<br/>
+          Venez rencontrer tous les PNJ du jeu ainsi que vos héros et vos boss préférés. En partenariat avec Nitendo, un complexe dédié à Link to The Past sera mis en place. <br/>
+          Ne tardez pas à prendre vos places pour découvrir nos guests et bien sûr, tous les goodies du jeu ainsi que ceux Nitendo!</p>
+        </div>
+      </div>
+    </section>
+    <div class="sectionSeparator"></div>
+    <section id="section4"> <!-- Section 4 -->
+      <div class="symbols"><img src="images/brown.png"></div>
+      <div class="clearBoth"></div>
+      <div class="symbols"><img src="images/brown.png"></div>
+      <div class="clearBoth"></div>
+      <div class="section row column">
+        <div class="subSection large-5">
+          <h2>Partez à l'aventure !</h2>
+          <p>Notre jeu est maintenant disponible sur navigateur !</p>
+          <a href="pages/play.html"><div id="buttonPlay">Jouer maintenant</div></a>
+        </div>
+        <div class="subSection large-5">image</div>
+      </div>
+    </section>
+    <div class="sectionSeparator"></div>
+    <!--------------- FOOTER --------------->
+    <footer>
+      <span>© Copyright 2017 - The Legend of Muget</span>
+    </footer>
+    <!-- Scripts Initiatlisation -->
+    <script src="scripts/vendor/jquery.js"></script>
+    <script src="scripts/vendor/what-input.js"></script>
+    <script src="scripts/vendor/foundation.min.js"></script>
+    <script>
+      $(document).foundation(); // Initialisation de Foundation
+      $(document).ready(function() { // Script to scroll the navigation bar
+        var positionElementInPage = $('ul').offset().top;
+        $(window).scroll(
+          function() {
+            if ($(window).scrollTop() >= positionElementInPage) {
+              // fixed
+              $('ul').addClass("floatable");
+            } else {
+              // relative
+              $('ul').removeClass("floatable");
+            }
+          }
+        );
+      });
+      $(document).ready(function() {
+        $('.scrollTo').on('click', function() { // On lick on an element
+          var page = $(this).attr('href'); // Page cible
+          var speed = 750; // Durée de l'animation (en ms)
+          $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+          return false;
+        });
+      });
+    </script>
 
   </body>
-  <script src="scripts/entitiesDraw.js"></script>
-  <script src="scripts/entitiesMove.js"></script>
-  <script src="scripts/main.js"></script>
+
 </html>
