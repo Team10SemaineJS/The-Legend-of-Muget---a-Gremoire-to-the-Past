@@ -115,31 +115,31 @@ function skeletonMove(){
   var diffY = player.y - skeleton.y;
   if(diffX > 0 || diffY > 0)
   {
-    skeleton.x += spdSkeleton1;
-    skeleton.y += spdSkeleton1;
-    hitboxSkeleton.x += spdSkeleton1;
-    hitboxSkeleton.y += spdSkeleton1;
+    skeleton.x += spdSkeleton;
+    skeleton.y += spdSkeleton;
+    hitboxSkeleton.x += spdSkeleton;
+    hitboxSkeleton.y += spdSkeleton;
   }
   if(diffX > 0 || diffY < 0)
   {
-    skeleton.x += spdSkeleton1;
-    skeleton.y -= spdSkeleton1;
-    hitboxSkeleton.x += spdSkeleton1;
-    hitboxSkeleton.y -= spdSkeleton1;
+    skeleton.x += spdSkeleton;
+    skeleton.y -= spdSkeleton;
+    hitboxSkeleton.x += spdSkeleton;
+    hitboxSkeleton.y -= spdSkeleton;
   }
   if(diffX < 0 || diffY > 0)
   {
-    skeleton.x -= spdSkeleton1;
-    skeleton.y += spdSkeleton1;
-    hitboxSkeleton.x -= spdSkeleton1;
-    hitboxSkeleton.y += spdSkeleton1;
+    skeleton.x -= spdSkeleton;
+    skeleton.y += spdSkeleton;
+    hitboxSkeleton.x -= spdSkeleton;
+    hitboxSkeleton.y += spdSkeleton;
   }
   if(diffX < 0 || diffY < 0)
   {
-    skeleton.x -= spdSkeleton1;
-    skeleton.y -= spdSkeleton1;
-    hitboxSkeleton.x -= spdSkeleton1;
-    hitboxSkeleton.y -= spdSkeleton1;
+    skeleton.x -= spdSkeleton;
+    skeleton.y -= spdSkeleton;
+    hitboxSkeleton.x -= spdSkeleton;
+    hitboxSkeleton.y -= spdSkeleton;
   }
 }
 
