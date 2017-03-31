@@ -23,11 +23,11 @@ var canvas= document.querySelector("canvas"),
     musicTheme = new Audio(),
     musicEnd = new Audio();
 
-canvas.width = 1024;
+canvas.width = 1024;   /* Setting size of the game zone */
 canvas.height = 512;
 
 init();
-function init() {
+function init() { /* Initiates each variables for the canvas */
   player.image = '../images/sprites/player.png';
   player.x = 470;
   player.y = 260;
@@ -64,22 +64,22 @@ function init() {
 }
 
 
-function loop() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  if (hpPlayer > 0){
-    scorePoints++;
+function loop() { /* Repeat the functions in the loop function */
+  context.clearRect(0, 0, canvas.width, canvas.height); // clear previous image to not have duplication from the draw function
+  if (hpPlayer > 0){ // first part of the loop when player is alive
+    scorePoints++; // imcrements score
     collision();
     collisionBorder();
     entitiesMove();
     entitiesDraw();
     hp();
-    musicTheme.play();
+    musicTheme.play(); // plays a music while player is alive
     score.innerHTML = '<p>Score = ' + scorePoints + '</p>';
-  } else {
+  } else { //second part of the loop when player is dead
     heart.style.display = "none";
     container.style.background = 'url(../images/gameOver.png)';
-    musicTheme.pause();
-    musicEnd.play();
+    musicTheme.pause(); // pause the previous sound or he will continue until it finishes even on the game over window
+    musicEnd.play(); // plays a music when Game Over
   }
   window.requestAnimationFrame(loop);
 }

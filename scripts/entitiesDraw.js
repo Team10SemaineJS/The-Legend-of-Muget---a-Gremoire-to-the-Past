@@ -1,4 +1,4 @@
-function entitiesDraw() {
+function entitiesDraw() { /* Calls functions to draw the entities*/
   playerDraw();
   skeletonDraw();
   batDraw();
@@ -8,7 +8,7 @@ function entitiesDraw() {
 }
 
 
-function playerDraw() {
+function playerDraw() { /* Draw the player with his images */
   player.srcSpriteX = srcSpriteX;
   player.srcSpriteY = srcSpriteY;
   directionSpritePlayer(); //Sprite switch
@@ -23,7 +23,7 @@ function playerDraw() {
 }
 
 
-function directionSpritePlayer() {
+function directionSpritePlayer() { /* Changes direction of the sprite with the direction of the move from the player */
   if (player.pressingDown) {
     srcSpriteY = 0; //Spritesheet row1
     switchPlayerSprite();
@@ -55,14 +55,14 @@ function switchPlayerSprite() {
 var srcSpriteSkeletonX = 0;
 var srcSpriteSkeletonY = 0;
 
-function skeletonDraw() {
+function skeletonDraw() { /* Draw the skeleton entity with his images */
   skeletonDraw.srcSpriteX = srcSpriteSkeletonX;
   skeletonDraw.srcSpriteY = srcSpriteSkeletonY;
   directionSpriteSkeleton(); //Sprite switch
   context.drawImage(skeletonSprite, skeletonDraw.srcSpriteX, skeletonDraw.srcSpriteY, skeleton.width, skeleton.height, skeleton.x, skeleton.y, skeleton.width, skeleton.height);
 }
 
-function directionSpriteSkeleton(){
+function directionSpriteSkeleton(){ /* Changes the image sprite depending on where the entity moves */
   var diffX = player.x - skeleton.x;
   var diffY = player.y - skeleton.y;
   if (diffX >= 0 && diffY >= 0)
@@ -84,12 +84,13 @@ function directionSpriteSkeleton(){
 batDraw.srcSpriteX = 0;
 batDraw.srcSpriteY = 0;
 
-function batDraw() {
+function batDraw() { /* Draw the bat entities with his image */
   context.drawImage(batSprite, 
                     batDraw.srcSpriteX, batDraw.srcSpriteY, bat.width, bat.height, 
                     bat.x, bat.y, bat.width, bat.height);
 }
 
+/* Same purpose as batDraw() for the others entities */
 
 function batDraw1() {
     context.drawImage(batSprite, 
@@ -111,9 +112,9 @@ function batDraw3() {
 
 
 
-var attack = setInterval(function(){ hitbox()}, 1000);
+var attack = setInterval(function(){ hitbox()}, 1000); /* Set the interval between to attacks allowed */ 
 
-function hitbox() {
+function hitbox() { /* Prevent ennemies from attacking the player to many times in a row */
   hitboxSkeleton.x = skeleton.x + 16;
   hitboxSkeleton.y = skeleton.y;
   if (hitboxPlayer.x < hitboxSkeleton.x + hitboxSkeleton.w 
@@ -145,7 +146,7 @@ function hitbox() {
 var heart = document.querySelector("#heart"),
     hpPlayer = 6;
 
-function hp(){
+function hp(){ /* changes the heart image depending on the player health */ 
   if (hpPlayer === 6)
   {
     heart.innerHTML = '<img src="../images/hp/hp6.png">';

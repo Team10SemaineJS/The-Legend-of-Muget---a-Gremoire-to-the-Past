@@ -15,7 +15,7 @@ var hitboxPlayer = {x:485, y:260, w:34, h:64},
     collisionBorderLeft = false,
     collisionBorderRight = false;
 
-function collision() {
+function collision() {/* collision handle the limits between the player and the trees and houses */
 
   if (hitboxPlayer.y <= collisionVillageTL.y + collisionVillageTL.h 
       && hitboxPlayer.x <= collisionVillageTL.x + collisionVillageTL.w) {
@@ -38,7 +38,7 @@ function collision() {
   }
 }
 
-function collisionBorder() {
+function collisionBorder() { /* Limits defined on the game map for the entities */
   if (hitboxPlayer.y <= 0) {
     collisionBorderUp = true;
   } else if (hitboxPlayer.y + hitboxPlayer.h >= canvas.height) {
@@ -56,7 +56,7 @@ function collisionBorder() {
 }
 
 
-function entitiesMove() {
+function entitiesMove() { /* Call functions that allow entities to move */
   playerMove();
   skeletonMove();
   batMove();
@@ -65,60 +65,60 @@ function entitiesMove() {
   batMove3();
 }
 
-function playerMove(){
-  document.onkeydown = function(event){
-    if(event.keyCode == 90) { //Z
+function playerMove(){ 
+  document.onkeydown = function(event){ /* Keyboard settings for key hold pressed*/
+    if(event.keyCode == 90) { //Z for going up
       player.pressingUp = true;
     }
-    else if(event.keyCode == 81) { //Q
+    else if(event.keyCode == 81) { //Q for going left 
       player.pressingLeft = true;
     }
-    else if(event.keyCode == 83) { //S
+    else if(event.keyCode == 83) { //S for going down
       player.pressingDown = true;
     }
-    else if(event.keyCode == 68) { //D
+    else if(event.keyCode == 68) { //D for going right
       player.pressingRight = true;
     }
   }
 
-  document.onkeyup = function(event){
-    if(event.keyCode == 90) { //Z
+  document.onkeyup = function(event){ /* Keyboard settings for key not pressed not to have the player keeping old values*/
+    if(event.keyCode == 90) { //Cancel Z
       player.pressingUp = false;
     }
-    else if(event.keyCode == 81) { //Q
+    else if(event.keyCode == 81) { //Cancel Q
       player.pressingLeft = false;
     }
-    else if(event.keyCode == 83) { //S
+    else if(event.keyCode == 83) { //Cancel S
       player.pressingDown = false;
     }
-    else if(event.keyCode == 68) { //D
+    else if(event.keyCode == 68) { //Cancel D
       player.pressingRight = false;
     }
   }
 
-  if(player.pressingUp && collisionUp === false && collisionBorderUp === false)
-  {  //Z
+  if(player.pressingUp && collisionUp === false && collisionBorderUp === false) /* Handles movement of the player on X and Y */
+  {  //Moving up
     player.y -= spdPlayer;
     hitboxPlayer.y -= spdPlayer;
   }
   else if(player.pressingLeft && collisionLeft === false && collisionBorderLeft === false)
-  { //Q
+  { //Moving Left
     player.x -= spdPlayer;
     hitboxPlayer.x -= spdPlayer;
   }
   else if(player.pressingDown && collisionDown === false && collisionBorderDown === false)
-  { //S
+  { //Moving down
     player.y += spdPlayer;
     hitboxPlayer.y += spdPlayer
   }
   else if(player.pressingRight && collisionRight === false && collisionBorderRight === false)
-  { //D
+  { //Moving right
     player.x += spdPlayer;
     hitboxPlayer.x += spdPlayer;
   }
 }
 
-function skeletonMove(){
+function skeletonMove(){ /* Movement on X and Y for the skeleton entity, following the player */
   var diffX = player.x - skeleton.x;
   var diffY = player.y - skeleton.y;
   if(diffX > 0 || diffY > 0)
@@ -163,7 +163,7 @@ var dirYBat2 = 2;
 var dirXBat3 = 2;
 var dirYBat3 = 2;
 
-function batMove(){
+function batMove(){ /* Moves one bat in order to that it bounds on the borders of the map */
   bat.x += dirXBat;
   bat.y += dirYBat;
   hitboxBat.x = bat.x;
@@ -177,6 +177,8 @@ function batMove(){
     dirYBat = -dirYBat;
   }
 }
+
+/* Movements for the others bats */
 
 function batMove1(){
   bat1.x += dirXBat1;
